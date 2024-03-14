@@ -12,4 +12,5 @@ Route::controller(TaskController::class)->group(function () {
     Route::post('/tasks','store') -> name('tasks-store');
     Route::put('/tasks/{task}', 'update' ) -> name('tasks-update');
     Route::delete('/tasks/{task}/delete','destroy') -> name('tasks-destroy');
+    Route::put('tasks/{task}/toggle-complete','toggleComplete') -> name('tasks-toggle');
 });

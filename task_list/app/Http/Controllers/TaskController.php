@@ -11,7 +11,7 @@ class TaskController extends Controller
 {
     public function index(){
         return view('index', [
-            'tasks' => Tasks::latest()->get()
+            'tasks' => Tasks::latest()->paginate(10),
         ]);
     }
 
@@ -47,5 +47,11 @@ class TaskController extends Controller
 
         return redirect()->route('tasks-index')
             ->with('success', 'Task deleted successfully');
+    }
+
+    public function toggleComplete(Tasks $task){
+        $task->toggle_complete();
+
+        return redirect()->back()->with('success', 'Task updated successfully');
     }
 }
